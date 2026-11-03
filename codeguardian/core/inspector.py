@@ -17,7 +17,9 @@ def git(root: Path, *args: str) -> bytes:
     return result.stdout
 
 
-def changed_python(root: Path, base: str, head: str) -> tuple[Path, ...]:
+def changed_python(
+    root: Path, base: str, head: str
+) -> tuple[tuple[Path, ...], tuple[Path, ...]]:
     for sha in (base, head):
         if not re.fullmatch(r"[0-9a-f]{40}", sha):
             raise ValueError("Expected full commit SHAs")
@@ -32,11 +34,11 @@ def changed_python(root: Path, base: str, head: str) -> tuple[Path, ...]:
         raise ValueError("Checkout must be at the review head")
     if git(root, "status", "--porcelain", "--untracked-files=all", "--ignored"):
         raise ValueError("Use a clean checkout, including ignored files")
-    paths = (
+    changes = (
         git(
             root,
             "diff",
-            "--name-only",
+            "--raw",
             "--no-renames",
             "--diff-filter=ACMT",
             "-z",
@@ -47,11 +49,18 @@ def changed_python(root: Path, base: str, head: str) -> tuple[Path, ...]:
         .decode()
         .split("\0")
     )
-    return tuple(
-        Path(path)
-        for path in paths
-        if path.endswith((".py", ".pyi"))
-        and (root / path).is_file()
-        and (root / path).resolve().is_relative_to(root)
-        and not (root / path).is_symlink()
-    )
+    eligible, excluded = [], []
+    for metadata, name in zip(changes[:-1:2], changes[1::2], strict=True):
+        if not name.endswith((".py", ".pyi")):
+            continue
+        path = root / name
+        if (
+            metadata.split()[1] in {"100644", "100755"}
+            and path.is_file()
+            and not path.is_symlink()
+            and path.resolve().is_relative_to(root)
+        ):
+            eligible.append(Path(name))
+        else:
+            excluded.append(Path(name))
+    return tuple(eligible), tuple(excluded)
