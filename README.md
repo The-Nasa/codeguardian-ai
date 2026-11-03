@@ -53,3 +53,27 @@ Para la primera ejecución, incorpora primero el motor, la política y el
 workflow a la rama por defecto. Después abre un PR interno de prueba y
 comprueba el resumen y el JSON. Activa la regla de check obligatorio después
 de validar ese PR y decidir cómo se aceptarán contribuciones desde forks.
+
+## Piloto manual de Codex
+
+El workflow CodeGuardian Codex Pilot revisa hasta 20 archivos cambiados y
+24 KB de diff Python de un PR interno abierto. La inferencia es independiente
+del check técnico. El resultado se consulta en la ejecución de Actions como
+vista previa. El diff se envía a la API de OpenAI.
+
+Para activarlo, incorpora codex-review.md y su lock generado a main.
+En Settings → Secrets and variables → Actions crea CODEX_API_KEY con una
+clave de un proyecto de OpenAI autorizado para el piloto. Define primero el
+presupuesto del proyecto y comprueba el acceso al modelo gpt-6.1-sol.
+Después ve a Actions → CodeGuardian Codex Pilot → Run workflow, elige main
+y proporciona el número de un PR interno de prueba que siga abierto.
+
+Usa datos sintéticos en la primera ejecución. Comprueba que el resultado
+cita el SHA y que Ruff y pytest conservan su propio check. Si el PR recibió
+commits después de iniciar la revisión, vuelve a ejecutar el piloto.
+
+Regenera el lock con gh-aw v1.0.1 y este comando:
+
+```powershell
+gh aw compile codex-review --strict --action-tag 0627fdbe4beb5f3b71aa569f8d97150b87f2111a
+```
