@@ -76,7 +76,70 @@ pre-agent-steps:
       if len(context.encode()) > 24000:
           raise SystemExit("Pilot limit: 24 KB of Python patches.")
       Path("codeguardian-agent-context.json").write_text(context, encoding="utf-8")
+      Path(os.environ["RUNNER_TEMP"], "codeguardian-review-sha.txt").write_text(
+          head["sha"], encoding="ascii"
+      )
       PY
+  - name: Save reviewed commit
+    uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+    with:
+      name: codeguardian-reviewed-sha
+      path: ${{ runner.temp }}/codeguardian-review-sha.txt
+      if-no-files-found: error
+      retention-days: 7
+jobs:
+  review_summary:
+    needs: [agent]
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    permissions:
+      actions: read
+      pull-requests: read
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        with:
+          name: codeguardian-reviewed-sha
+          path: review-metadata
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        with:
+          name: agent
+          path: agent-report
+      - name: Show advisory report
+        env:
+          PR_NUMBER: ${{ inputs.pr_number }}
+          REVIEW_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import html
+          import json
+          import os
+          import re
+          from pathlib import Path
+          from urllib.request import Request, urlopen
+
+          number = os.environ["PR_NUMBER"]
+          sha = Path("review-metadata/codeguardian-review-sha.txt").read_text().strip()
+          if not re.fullmatch(r"[1-9][0-9]*", number) or not re.fullmatch(r"[0-9a-f]{40}", sha):
+              raise SystemExit("Invalid review metadata.")
+          endpoint = f"{os.environ['GITHUB_API_URL']}/repos/{os.environ['GITHUB_REPOSITORY']}/pulls/{number}"
+          request = Request(endpoint, headers={
+              "Authorization": f"Bearer {os.environ['REVIEW_TOKEN']}",
+              "Accept": "application/vnd.github+json",
+          })
+          with urlopen(request, timeout=20) as response:
+              pr = json.load(response)
+          output = json.loads(Path("agent-report/agent_output.json").read_text(encoding="utf-8"))
+          report = next((item["message"] for item in output["items"]
+                         if item["type"] == "noop"), "").strip()
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as summary:
+              summary.write(f"## Gemini review · PR #{number}\n\nReviewed commit: `{sha}`\n\n")
+              if pr["head"]["sha"] != sha or pr["state"] != "open":
+                  summary.write("**Obsolete review.** The PR changed or closed after the snapshot.\n\n")
+              if report:
+                  summary.write(f"<pre>{html.escape(report)}</pre>\n")
+              else:
+                  summary.write("Gemini did not provide a report. Check the agent artifact.\n")
+          PY
 ---
 
 # CodeGuardian contextual review
