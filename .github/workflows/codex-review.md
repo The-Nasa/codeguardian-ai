@@ -113,7 +113,6 @@ jobs:
           REVIEW_TOKEN: ${{ github.token }}
         run: |
           python3 - <<'PY'
-          import html
           import json
           import os
           import re
@@ -134,12 +133,37 @@ jobs:
           output = json.loads(Path("agent-report/agent_output.json").read_text(encoding="utf-8"))
           report = next((item["message"] for item in output["items"]
                          if item["type"] == "noop"), "").strip()
+
+          def plain(text):
+              return "".join(char if char.isalnum() or char == " " else f"&#{ord(char)};"
+                             for char in text)
+
+          def format_report(text):
+              lines = ["### Hallazgos de Gemini", ""]
+              for raw in text[:6000].splitlines():
+                  line = raw.strip().replace("**", "")
+                  if not line:
+                      continue
+                  field = re.fullmatch(
+                      r"[-*]\s+(Path|Line(?: from diff)?|Severity|Evidence|Suggested Fix):\s*(.*)",
+                      line, re.IGNORECASE,
+                  )
+                  if field:
+                      label, value = field.groups()
+                      lines.append(f"- **{label.title()}:** {plain(value)}")
+                  elif re.match(r"\d+\.\s+", line):
+                      lines.extend(("", "#### " + plain(line)))
+                  else:
+                      lines.extend(("", plain(line.lstrip("# ")), ""))
+              return "\n".join(lines)
+
+          formatted = format_report(report) if report else ""
           with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as summary:
               summary.write(f"## Gemini review · PR #{number}\n\nReviewed commit: `{sha}`\n\n")
               if pr["head"]["sha"] != sha or pr["state"] != "open":
                   summary.write("**Obsolete review.** The PR changed or closed after the snapshot.\n\n")
               if report:
-                  summary.write(f"<pre>{html.escape(report)}</pre>\n")
+                  summary.write(formatted + "\n")
               else:
                   summary.write("Gemini did not provide a report. Check the agent artifact.\n")
 
@@ -175,7 +199,7 @@ jobs:
                   summary.write("\n**Obsolete review.** The PR changed before publication.\n")
               raise SystemExit(0)
           body = (f"{marker}\n## Gemini review\n\nReviewed commit: `{sha}`\n\n"
-                  f"<pre>{html.escape(report[:6000]).replace('@', '&#64;')}</pre>")
+                  + formatted)
           if previous:
               api(f"{repository_url}/issues/comments/{int(previous['id'])}", "PATCH", {"body": body})
           else:
