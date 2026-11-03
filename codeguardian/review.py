@@ -18,9 +18,14 @@ from codeguardian.core.inspector import changed_python
 def review(root: Path, base: str, head: str, policy_path: Path) -> dict:
     policy_text = policy_path.read_text(encoding="utf-8")
     policy = resolve_policy(PolicyInput(policy_text, PolicySource.APPROVED))
-    changed = changed_python(root, base, head)
+    changed, excluded = changed_python(root, base, head)
     context = ReviewContext(changed, policy)
     results, failures, incomplete, advisories = [], [], [], []
+    if excluded:
+        limitations = incomplete if "ruff" in policy.required_checks else advisories
+        limitations.extend(
+            f"ruff: could not analyze {path.as_posix()}" for path in excluded
+        )
     for tool in ("ruff", "pytest"):
         analyzer = PythonAnalyzer(tool, head, root)
         if not analyzer.supports(context):
