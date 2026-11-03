@@ -1,5 +1,5 @@
 ---
-name: CodeGuardian Codex Pilot
+name: CodeGuardian Gemini Pilot
 on:
   workflow_dispatch:
     inputs:
@@ -10,8 +10,8 @@ on:
 permissions:
   contents: read
   pull-requests: read
-engine: codex
-model: openai/gpt-6.1-sol
+engine: gemini
+model: gemini-3.5-flash-lite
 timeout-minutes: 5
 tools:
   bash: true

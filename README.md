@@ -54,18 +54,17 @@ workflow a la rama por defecto. Después abre un PR interno de prueba y
 comprueba el resumen y el JSON. Activa la regla de check obligatorio después
 de validar ese PR y decidir cómo se aceptarán contribuciones desde forks.
 
-## Piloto manual de Codex
+## Piloto manual de Gemini
 
-El workflow CodeGuardian Codex Pilot revisa hasta 20 archivos cambiados y
+El workflow CodeGuardian Gemini Pilot revisa hasta 20 archivos cambiados y
 24 KB de diff Python de un PR interno abierto. La inferencia es independiente
 del check técnico. El resultado se consulta en la ejecución de Actions como
-vista previa. El diff se envía a la API de OpenAI.
+vista previa. El diff se envía a la API de Gemini.
 
 Para activarlo, incorpora codex-review.md y su lock generado a main.
-En Settings → Secrets and variables → Actions crea CODEX_API_KEY con una
-clave de un proyecto de OpenAI autorizado para el piloto. Define primero el
-presupuesto del proyecto y comprueba el acceso al modelo gpt-6.1-sol.
-Después ve a Actions → CodeGuardian Codex Pilot → Run workflow, elige main
+En Settings → Secrets and variables → Actions crea GEMINI_API_KEY con una
+clave de un proyecto Free Tier de Google AI Studio con acceso a gemini-3.5-flash-lite.
+Después ve a Actions → CodeGuardian Gemini Pilot → Run workflow, elige main
 y proporciona el número de un PR interno de prueba que siga abierto.
 
 Usa datos sintéticos en la primera ejecución. Comprueba que el resultado
