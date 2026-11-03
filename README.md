@@ -76,3 +76,15 @@ Regenera el lock con gh-aw v1.0.1 y este comando:
 ```powershell
 gh aw compile codex-review --strict --action-tag 0627fdbe4beb5f3b71aa569f8d97150b87f2111a
 ```
+
+## Revisión automática de Gemini
+
+Gemini se ejecuta al abrir, actualizar, reabrir o marcar como listo un PR
+interno hacia main. Cada ejecución elegible usa la cuota de Gemini. Los
+borradores, forks y PR de Dependabot quedan fuera de la revisión automática.
+El piloto conserva los límites de 20 archivos cambiados y 24 KB de diff Python.
+Run workflow sigue disponible para reintentar desde main.
+
+Cuando cambia el commit del PR, el comentario previo se marca como obsoleto.
+Si Gemini completa la revisión del nuevo commit, actualiza ese comentario
+con el nuevo SHA y los hallazgos. El check técnico sigue siendo independiente.
