@@ -17,3 +17,6 @@ include = ["codeguardian*"]
 
 [tool.setuptools.package-data]
 "codeguardian.schemas" = ["*.json"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
