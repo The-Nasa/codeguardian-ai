@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "version": {
+      "enum": [
+        1
+      ]
+    },
+    "profile": {
+      "enum": [
+        "standard"
+      ]
+    },
+    "required_checks": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "ruff",
+          "pytest"
+        ]
+      }
+    },
+    "allow_external_tests": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "version",
+    "profile",
+    "required_checks",
+    "allow_external_tests"
+  ],
+  "additionalProperties": false
+}
