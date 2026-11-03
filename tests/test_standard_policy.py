@@ -12,4 +12,3 @@ def test_repository_standard_policy_requires_pytest():
     )
     assert policy.profile == "standard"
     assert "pytest" in policy.required_checks
-    assert False, 'Intentional failure to verify the GitHub quality gate'
