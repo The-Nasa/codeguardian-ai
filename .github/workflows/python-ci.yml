@@ -1,0 +1,65 @@
+name: CodeGuardian Technical
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: codeguardian-technical-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  technical:
+    name: CodeGuardian Technical
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      BASE_SHA: ${{ github.event.pull_request.base.sha }}
+      HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+      TRUSTED: ${{ github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.base.ref == github.event.repository.default_branch && github.event.pull_request.user.login != 'dependabot[bot]' }}
+    steps:
+      - name: Check review scope
+        run: |
+          if [[ "$TRUSTED" != "true" ]]; then
+            echo "INCOMPLETE: this pilot runs only for internal PRs targeting the default branch." >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+      - name: Checkout approved engine and policy
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: approved
+          persist-credentials: false
+      - name: Checkout revision under review
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: candidate
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install approved engine
+        run: python -m pip install './approved[review]'
+      - name: Run technical review
+        run: |
+          status=0
+          python -I -m codeguardian.review candidate --base "$BASE_SHA" --head "$HEAD_SHA" \
+            --policy approved/codeguardian.yml --trusted > codeguardian-review.json || status=$?
+          case "$status" in
+            0) outcome=$(python -c 'import json; print(json.load(open("codeguardian-review.json"))["decision"]["logical_status"])') ;;
+            1) outcome=FAIL ;;
+            *) outcome=INCOMPLETE ;;
+          esac
+          printf '**%s** · commit `%s`\n' "$outcome" "$HEAD_SHA" >> "$GITHUB_STEP_SUMMARY"
+          exit "$status"
+      - name: Save review report
+        if: ${{ !cancelled() && hashFiles('codeguardian-review.json') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: codeguardian-review
+          path: codeguardian-review.json
+          retention-days: 7

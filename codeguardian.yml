@@ -1,0 +1,5 @@
+version: 1
+profile: standard
+required_checks:
+  - pytest
+allow_external_tests: false
