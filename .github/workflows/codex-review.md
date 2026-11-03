@@ -92,9 +92,12 @@ jobs:
     needs: [agent]
     runs-on: ubuntu-latest
     timeout-minutes: 2
+    concurrency:
+      group: codeguardian-gemini-comment-${{ inputs.pr_number }}
+      cancel-in-progress: false
     permissions:
       actions: read
-      pull-requests: read
+      pull-requests: write
     steps:
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
         with:
@@ -139,6 +142,44 @@ jobs:
                   summary.write(f"<pre>{html.escape(report)}</pre>\n")
               else:
                   summary.write("Gemini did not provide a report. Check the agent artifact.\n")
+
+          if not report or pr["head"]["sha"] != sha or pr["state"] != "open":
+              raise SystemExit(0)
+
+          marker = "<!-- codeguardian-gemini-report -->"
+          repository_url = f"{os.environ['GITHUB_API_URL']}/repos/{os.environ['GITHUB_REPOSITORY']}"
+          comments_url = f"{repository_url}/issues/{number}/comments"
+          headers = dict(request.header_items())
+
+          def api(url, method="GET", data=None):
+              payload = json.dumps(data).encode() if data is not None else None
+              with urlopen(Request(url, data=payload, method=method, headers={
+                  **headers, "Content-Type": "application/json",
+              }), timeout=20) as response:
+                  return json.load(response)
+
+          previous = None
+          for page in range(1, 11):
+              comments = api(f"{comments_url}?per_page=100&page={page}")
+              previous = next((item for item in comments
+                               if item["user"]["login"] == "github-actions[bot]"
+                               and (item.get("body") or "").startswith(marker)), None)
+              if previous or len(comments) < 100:
+                  break
+          else:
+              raise SystemExit("Could not safely identify the existing review comment.")
+
+          current = api(endpoint)
+          if current["state"] != "open" or current["head"]["sha"] != sha:
+              with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as summary:
+                  summary.write("\n**Obsolete review.** The PR changed before publication.\n")
+              raise SystemExit(0)
+          body = (f"{marker}\n## Gemini review\n\nReviewed commit: `{sha}`\n\n"
+                  f"<pre>{html.escape(report[:6000]).replace('@', '&#64;')}</pre>")
+          if previous:
+              api(f"{repository_url}/issues/comments/{int(previous['id'])}", "PATCH", {"body": body})
+          else:
+              api(comments_url, "POST", {"body": body})
           PY
 ---
 
