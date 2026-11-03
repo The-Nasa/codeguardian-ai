@@ -1,6 +1,12 @@
 ---
 name: CodeGuardian Gemini Pilot
 on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [main]
+    forks: ["The-Nasa/codeguardian-ai"]
+    acknowledge-risk: true
+  roles: [admin, maintainer, write]
   workflow_dispatch:
     inputs:
       pr_number:
@@ -10,6 +16,8 @@ on:
 permissions:
   contents: read
   pull-requests: read
+if: github.event_name == 'workflow_dispatch' || (github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.user.login != 'dependabot[bot]' && !github.event.pull_request.draft)
+checkout: false
 engine: gemini
 model: gemini-3.5-flash-lite
 timeout-minutes: 5
@@ -27,7 +35,8 @@ concurrency:
 pre-agent-steps:
   - name: Prepare bounded review context
     env:
-      PR_NUMBER: ${{ inputs.pr_number }}
+      PR_NUMBER: ${{ github.event.pull_request.number || inputs.pr_number }}
+      EVENT_HEAD: ${{ github.event.pull_request.head.sha }}
       REVIEW_TOKEN: ${{ github.token }}
       DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
     run: |
@@ -55,6 +64,8 @@ pre-agent-steps:
 
       pr = get(endpoint)
       head = pr["head"]
+      if os.environ["EVENT_HEAD"] and head["sha"] != os.environ["EVENT_HEAD"]:
+          raise SystemExit("A newer commit already has its own review run.")
       if (pr["state"] != "open" or (head["repo"] or {}).get("full_name") != repository
               or pr["base"]["ref"] != default or pr["user"]["login"] == "dependabot[bot]"):
           raise SystemExit("Only open internal PRs targeting the default branch are eligible.")
@@ -88,12 +99,41 @@ pre-agent-steps:
       if-no-files-found: error
       retention-days: 7
 jobs:
+  mark_obsolete:
+    if: github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.base.ref == github.event.repository.default_branch && github.event.pull_request.user.login != 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    concurrency:
+      group: codeguardian-gemini-comment-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+        with:
+          script: |
+            const scope = { ...context.repo, issue_number: context.payload.pull_request.number };
+            const marker = '<!-- codeguardian-gemini-report -->';
+            for await (const page of github.paginate.iterator(github.rest.issues.listComments, { ...scope, per_page: 100 })) {
+              const comment = page.data.find(item =>
+                item.user?.login === 'github-actions[bot]' && item.body?.startsWith(marker));
+              if (!comment) continue;
+              const { data: pr } = await github.rest.pulls.get({ ...context.repo, pull_number: scope.issue_number });
+              const reviewed = comment.body.match(/^Reviewed commit: `([a-f0-9]{40})`$/m);
+              if (pr.state === 'open' && reviewed && reviewed[1] !== pr.head.sha && !comment.body.includes('<!-- codeguardian-obsolete -->')) {
+                await github.rest.issues.updateComment({
+                  ...context.repo, comment_id: comment.id,
+                  body: comment.body.replace(marker, marker + '\n<!-- codeguardian-obsolete -->\n> **Revisión obsoleta.** El PR tiene un commit posterior al revisado.\n'),
+                });
+              }
+              break;
+            }
   review_summary:
     needs: [agent]
     runs-on: ubuntu-latest
     timeout-minutes: 2
     concurrency:
-      group: codeguardian-gemini-comment-${{ inputs.pr_number }}
+      group: codeguardian-gemini-comment-${{ github.event.pull_request.number || inputs.pr_number }}
       cancel-in-progress: false
     permissions:
       actions: read
@@ -109,7 +149,7 @@ jobs:
           path: agent-report
       - name: Show advisory report
         env:
-          PR_NUMBER: ${{ inputs.pr_number }}
+          PR_NUMBER: ${{ github.event.pull_request.number || inputs.pr_number }}
           REVIEW_TOKEN: ${{ github.token }}
         run: |
           python3 - <<'PY'

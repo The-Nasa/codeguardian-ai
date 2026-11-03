@@ -1,5 +1,5 @@
-# gh-aw-metadata: {"schema_version":"v4","frontmatter_hash":"1d0142db452c90b55e2d0f63775578f95f80bde0b220e77e1cb42f99003a09e7","body_hash":"e7ce7f746ec316cfce449602b8f3f015fa95f68ccd03ba4250b182c464898a52","compiler_version":"v1.0.1","strict":true,"agent_id":"gemini","agent_model":"gemini-3.5-flash-lite","engine_versions":{"gemini":"0.64.0"}}
-# gh-aw-manifest: {"version":1,"secrets":["COPILOT_GITHUB_TOKEN","GEMINI_API_KEY","GH_AW_DEFAULT_OTLP_ENDPOINT","GH_AW_DEFAULT_OTLP_HEADERS","GH_AW_GITHUB_MCP_SERVER_TOKEN","GH_AW_GITHUB_TOKEN","GITHUB_TOKEN"],"actions":[{"repo":"actions/checkout","sha":"3d3c42e5aac5ba805825da76410c181273ba90b1","version":"v7.0.1"},{"repo":"actions/download-artifact","sha":"9000827ccba6bdab643e8b6fd33ac0654aef8333","version":"v8.0.2"},{"repo":"actions/github-script","sha":"3a2844b7e9c422d3c10d287c895573f7108da1b3","version":"v9.0.0"},{"repo":"actions/setup-node","sha":"949feb2413d6458794dcd2491c4babbbce0c15c1","version":"v7.1.0"},{"repo":"actions/upload-artifact","sha":"cf430e030ddbb5b0abf93d22962f4752f3646cd9","version":"v7.0.2"},{"repo":"github/gh-aw/actions/setup","sha":"0627fdbe4beb5f3b71aa569f8d97150b87f2111a","version":"0627fdbe4beb5f3b71aa569f8d97150b87f2111a"}],"containers":[{"image":"ghcr.io/github/gh-aw-firewall/agent:0.29.0","digest":"sha256:b14bd399376180b5649a9324be3b50fbfc82bfe8f0c80045840416b5a4e65b96","pinned_image":"ghcr.io/github/gh-aw-firewall/agent:0.29.0@sha256:b14bd399376180b5649a9324be3b50fbfc82bfe8f0c80045840416b5a4e65b96"},{"image":"ghcr.io/github/gh-aw-firewall/api-proxy:0.29.0","digest":"sha256:baff00b856a4bdc93bce134928c70af3d3492f2e518757115042040674d56b0b","pinned_image":"ghcr.io/github/gh-aw-firewall/api-proxy:0.29.0@sha256:baff00b856a4bdc93bce134928c70af3d3492f2e518757115042040674d56b0b"},{"image":"ghcr.io/github/gh-aw-firewall/squid:0.29.0","digest":"sha256:6e0cbf7f980beb78b5461563a8164f6439ca959bc93733d5a6b52972e523ed50","pinned_image":"ghcr.io/github/gh-aw-firewall/squid:0.29.0@sha256:6e0cbf7f980beb78b5461563a8164f6439ca959bc93733d5a6b52972e523ed50"},{"image":"ghcr.io/github/gh-aw-mcpg:v0.5.0","digest":"sha256:d3544a4222e7efeeeb38669d8a1af0c72691c55b8f6506b15aa5920f7f31b7bc","pinned_image":"ghcr.io/github/gh-aw-mcpg:v0.5.0@sha256:d3544a4222e7efeeeb38669d8a1af0c72691c55b8f6506b15aa5920f7f31b7bc"},{"image":"ghcr.io/github/gh-aw-node","digest":"sha256:2c2ea524e648b91c8333ce246e3838fcf5b19ac70e45baac1a51b9207299749f","pinned_image":"ghcr.io/github/gh-aw-node@sha256:2c2ea524e648b91c8333ce246e3838fcf5b19ac70e45baac1a51b9207299749f"}],"mcp_servers":[{"name":"safeoutputs","tools":["noop","report_incomplete","report_missing_data","report_missing_tool"]}],"threat_detection":{"mode":"disabled"},"admission":false}
+# gh-aw-metadata: {"schema_version":"v4","frontmatter_hash":"7b948898a52753c908a4d6e2e03400d964620a949ebde159f9b9e5a32ae48c48","body_hash":"e7ce7f746ec316cfce449602b8f3f015fa95f68ccd03ba4250b182c464898a52","compiler_version":"v1.0.1","strict":true,"agent_id":"gemini","agent_model":"gemini-3.5-flash-lite","engine_versions":{"gemini":"0.64.0"}}
+# gh-aw-manifest: {"version":1,"secrets":["COPILOT_GITHUB_TOKEN","GEMINI_API_KEY","GH_AW_DEFAULT_OTLP_ENDPOINT","GH_AW_DEFAULT_OTLP_HEADERS","GH_AW_GITHUB_MCP_SERVER_TOKEN","GH_AW_GITHUB_TOKEN","GITHUB_TOKEN"],"actions":[{"repo":"actions/checkout","sha":"3d3c42e5aac5ba805825da76410c181273ba90b1","version":"v7.0.1"},{"repo":"actions/download-artifact","sha":"9000827ccba6bdab643e8b6fd33ac0654aef8333","version":"v8.0.2"},{"repo":"actions/github-script","sha":"3a2844b7e9c422d3c10d287c895573f7108da1b3","version":"v9.0.0"},{"repo":"actions/setup-node","sha":"949feb2413d6458794dcd2491c4babbbce0c15c1","version":"v7.1.0"},{"repo":"actions/upload-artifact","sha":"cf430e030ddbb5b0abf93d22962f4752f3646cd9","version":"v7.0.2"},{"repo":"github/gh-aw/actions/setup","sha":"0627fdbe4beb5f3b71aa569f8d97150b87f2111a","version":"0627fdbe4beb5f3b71aa569f8d97150b87f2111a"}],"containers":[{"image":"ghcr.io/github/gh-aw-firewall/agent:0.29.0","digest":"sha256:b14bd399376180b5649a9324be3b50fbfc82bfe8f0c80045840416b5a4e65b96","pinned_image":"ghcr.io/github/gh-aw-firewall/agent:0.29.0@sha256:b14bd399376180b5649a9324be3b50fbfc82bfe8f0c80045840416b5a4e65b96"},{"image":"ghcr.io/github/gh-aw-firewall/api-proxy:0.29.0","digest":"sha256:baff00b856a4bdc93bce134928c70af3d3492f2e518757115042040674d56b0b","pinned_image":"ghcr.io/github/gh-aw-firewall/api-proxy:0.29.0@sha256:baff00b856a4bdc93bce134928c70af3d3492f2e518757115042040674d56b0b"},{"image":"ghcr.io/github/gh-aw-firewall/squid:0.29.0","digest":"sha256:6e0cbf7f980beb78b5461563a8164f6439ca959bc93733d5a6b52972e523ed50","pinned_image":"ghcr.io/github/gh-aw-firewall/squid:0.29.0@sha256:6e0cbf7f980beb78b5461563a8164f6439ca959bc93733d5a6b52972e523ed50"},{"image":"ghcr.io/github/gh-aw-mcpg:v0.5.0","digest":"sha256:d3544a4222e7efeeeb38669d8a1af0c72691c55b8f6506b15aa5920f7f31b7bc","pinned_image":"ghcr.io/github/gh-aw-mcpg:v0.5.0@sha256:d3544a4222e7efeeeb38669d8a1af0c72691c55b8f6506b15aa5920f7f31b7bc"},{"image":"ghcr.io/github/gh-aw-node","digest":"sha256:2c2ea524e648b91c8333ce246e3838fcf5b19ac70e45baac1a51b9207299749f","pinned_image":"ghcr.io/github/gh-aw-node@sha256:2c2ea524e648b91c8333ce246e3838fcf5b19ac70e45baac1a51b9207299749f"}],"has_pull_request_target":true,"mcp_servers":[{"name":"safeoutputs","tools":["noop","report_incomplete","report_missing_data","report_missing_tool"]}],"threat_detection":{"mode":"disabled"},"admission":false}
 # This file was automatically generated by gh-aw (v1.0.1). DO NOT EDIT. To debug this workflow, load the skill at https://github.com/github/gh-aw/blob/main/debug.md
 #
 #    ___                   _   _
@@ -50,6 +50,21 @@
 
 name: "CodeGuardian Gemini Pilot"
 on:
+  pull_request_target:
+    # acknowledge-risk: true # Risk acknowledgment is compiler-only
+    branches:
+      - main
+    forks:
+      - The-Nasa/codeguardian-ai
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+  # roles: # Roles processed as role check in pre-activation job
+  # - admin # Roles processed as role check in pre-activation job
+  # - maintainer # Roles processed as role check in pre-activation job
+  # - write # Roles processed as role check in pre-activation job
   workflow_dispatch:
     inputs:
       aw_context:
@@ -66,8 +81,8 @@ on:
 permissions: {}
 
 concurrency:
-  group: "gh-aw-${{ github.workflow }}"
-  queue: max
+  group: "gh-aw-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref || github.run_id }}"
+  cancel-in-progress: true
 
 run-name: "CodeGuardian Gemini Pilot"
 
@@ -82,6 +97,10 @@ env:
 jobs:
   activation:
     name: activation
+    needs: pre_activation
+    if: >
+      needs.pre_activation.outputs.activated == 'true' && (github.event_name == 'workflow_dispatch' || (github.event.pull_request.head.repo.full_name == github.repository &&
+      github.event.pull_request.user.login != 'dependabot[bot]' && !github.event.pull_request.draft))
     runs-on: ubuntu-slim
     # Permissions for the activation job (workflow permissions default to none).
     permissions:
@@ -93,6 +112,7 @@ jobs:
       GH_AW_RUNTIME_FEATURES: ${{ vars.GH_AW_RUNTIME_FEATURES }}
     outputs:
       aw_context: ${{ steps.generate_aw_info.outputs.aw_context }}
+      body: ${{ steps.sanitized.outputs.body }}
       comment_id: ""
       comment_repo: ""
       daily_ai_credits_estimated: ${{ steps.daily-ai-credits-workflow-guardrail.outputs.daily_ai_credits_estimated || '' }}
@@ -110,6 +130,8 @@ jobs:
       setup-span-id: ${{ steps.setup.outputs.span-id }}
       setup-trace-id: ${{ steps.setup.outputs.trace-id }}
       stale_lock_file_failed: ${{ steps.check-lock-file.outputs.stale_lock_file_failed == 'true' }}
+      text: ${{ steps.sanitized.outputs.text }}
+      title: ${{ steps.sanitized.outputs.title }}
     steps:
       - name: Setup Scripts
         id: setup
@@ -117,6 +139,8 @@ jobs:
         with:
           destination: ${{ runner.temp }}/gh-aw/actions
           job-name: ${{ github.job }}
+          trace-id: ${{ needs.pre_activation.outputs.setup-trace-id }}
+          parent-span-id: ${{ needs.pre_activation.outputs.setup-parent-span-id || needs.pre_activation.outputs.setup-span-id }}
           safe-output-artifact-client: ${{ env.GH_AW_MAX_DAILY_AI_CREDITS != '' }}
         env:
           GH_AW_SETUP_WORKFLOW_NAME: "CodeGuardian Gemini Pilot"
@@ -268,6 +292,19 @@ jobs:
             setupGlobals(core, github, context, exec, io, getOctokit);
             const { main } = require(path.join(actionsDir, 'check_version_updates.cjs'));
             await main();
+      - name: Compute current body text
+        id: sanitized
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        env:
+          GH_AW_ALLOWED_DOMAINS: "api.snapcraft.io,archive.ubuntu.com,azure.archive.ubuntu.com,crl.geotrust.com,crl.globalsign.com,crl.identrust.com,crl.sectigo.com,crl.thawte.com,crl.usertrust.com,crl.verisign.com,crl3.digicert.com,crl4.digicert.com,crls.ssl.com,generativelanguage.googleapis.com,json-schema.org,json.schemastore.org,keyserver.ubuntu.com,ocsp.digicert.com,ocsp.geotrust.com,ocsp.globalsign.com,ocsp.identrust.com,ocsp.sectigo.com,ocsp.ssl.com,ocsp.thawte.com,ocsp.usertrust.com,ocsp.verisign.com,packagecloud.io,packages.cloud.google.com,packages.microsoft.com,ppa.launchpad.net,s.symcb.com,s.symcd.com,security.ubuntu.com,ts-crl.ws.symantec.com,ts-ocsp.ws.symantec.com,www.googleapis.com"
+        with:
+          script: |
+            const path = require('path');
+            const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+            const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+            setupGlobals(core, github, context, exec, io, getOctokit);
+            const { main } = require(path.join(actionsDir, 'compute_text.cjs'));
+            await main();
       - name: Log runtime features
         if: ${{ contains(toJSON(vars), '"GH_AW_RUNTIME_FEATURES":') }}
         run: bash "${RUNNER_TEMP}/gh-aw/actions/log_runtime_features_summary.sh"
@@ -311,6 +348,7 @@ jobs:
         env:
           GH_AW_PROMPT: ${{ runner.temp }}/gh-aw/aw-prompts/prompt.txt
           GH_AW_MCP_CLI_SERVERS_LIST: '- `safeoutputs` — run `safeoutputs --help` to see available tools'
+          GH_AW_NEEDS_PRE_ACTIVATION_OUTPUTS_ACTIVATED: ${{ needs.pre_activation.outputs.activated }}
         with:
           script: |
             const path = require('path');
@@ -324,7 +362,8 @@ jobs:
             return await substitutePlaceholders({
               file: process.env.GH_AW_PROMPT,
               substitutions: {
-                GH_AW_MCP_CLI_SERVERS_LIST: process.env.GH_AW_MCP_CLI_SERVERS_LIST
+                GH_AW_MCP_CLI_SERVERS_LIST: process.env.GH_AW_MCP_CLI_SERVERS_LIST,
+                GH_AW_NEEDS_PRE_ACTIVATION_OUTPUTS_ACTIVATED: process.env.GH_AW_NEEDS_PRE_ACTIVATION_OUTPUTS_ACTIVATED
               }
             });
       - name: Validate prompt placeholders
@@ -386,7 +425,9 @@ jobs:
 
   agent:
     name: agent
-    needs: activation
+    needs:
+      - activation
+      - mark_obsolete
     if: needs.activation.outputs.daily_ai_credits_exceeded != 'true'
     runs-on: ubuntu-latest
     # Permissions for the agent job (workflow permissions default to none).
@@ -414,8 +455,6 @@ jobs:
       ai_credits_rate_limit_error: ${{ steps.parse-mcp-gateway.outputs.ai_credits_rate_limit_error || 'false' }}
       aic: ${{ steps.parse-token-usage.outputs.aic }}
       ambient_context: ${{ steps.parse-token-usage.outputs.ambient_context }}
-      checkout_pr_invalidated: ${{ steps.checkout-pr.outputs.checkout_pr_invalidated || 'false' }}
-      checkout_pr_success: ${{ steps.checkout-pr.outputs.checkout_pr_success || 'true' }}
       has_patch: ${{ steps.collect_output.outputs.has_patch }}
       model: ${{ needs.activation.outputs.model }}
       output: ${{ steps.collect_output.outputs.output }}
@@ -457,10 +496,6 @@ jobs:
         run: bash "${RUNNER_TEMP}/gh-aw/actions/mask_otlp_headers.sh"
       - name: Check OTLP telemetry configuration
         run: bash "${RUNNER_TEMP}/gh-aw/actions/check_otlp_default_credentials.sh"
-      - name: Checkout repository (gh-aw default)
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
       - name: Initialize agent execution evidence
         run: |
           mkdir -p "/tmp/gh-aw"
@@ -478,28 +513,6 @@ jobs:
         with:
           name: activation
           path: /tmp/gh-aw
-      - name: Configure Git credentials
-        env:
-          GITHUB_REPOSITORY: ${{ github.repository }}
-          GITHUB_SERVER_URL: ${{ github.server_url }}
-          GITHUB_TOKEN: ${{ github.token }}
-        run: bash "${RUNNER_TEMP}/gh-aw/actions/configure_git_credentials.sh"
-      - name: Checkout PR branch
-        id: checkout-pr
-        if: |
-          github.event.pull_request || github.event.issue.pull_request || github.event_name == 'workflow_dispatch'
-        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
-        env:
-          GH_TOKEN: ${{ secrets.GH_AW_GITHUB_MCP_SERVER_TOKEN || secrets.GH_AW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
-        with:
-          github-token: ${{ secrets.GH_AW_GITHUB_MCP_SERVER_TOKEN || secrets.GH_AW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
-          script: |
-            const path = require('path');
-            const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
-            const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
-            setupGlobals(core, github, context, exec, io, getOctokit);
-            const { main } = require(path.join(actionsDir, 'checkout_pr_branch.cjs'));
-            await main();
       - name: Setup Node.js
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
@@ -509,12 +522,6 @@ jobs:
         run: bash "${RUNNER_TEMP}/gh-aw/actions/install_awf_binary.sh" v0.29.0 --rootless
       - name: Install Gemini CLI
         run: npm install --ignore-scripts -g @google/gemini-cli@0.64.0
-      - name: Restore agent config folders from base branch
-        if: steps.checkout-pr.outcome == 'success'
-        env:
-          GH_AW_AGENT_FOLDERS: ".agents .gemini .github"
-          GH_AW_AGENT_FILES: "AGENTS.md GEMINI.md"
-        run: bash "${RUNNER_TEMP}/gh-aw/actions/restore_base_github_folders.sh"
       - name: Restore inline sub-agents from activation artifact
         env:
           GH_AW_SUB_AGENT_DIR: ".gemini/agents"
@@ -526,10 +533,11 @@ jobs:
         run: bash "${RUNNER_TEMP}/gh-aw/actions/restore_inline_skills.sh"
       - env:
           DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
-          PR_NUMBER: ${{ inputs.pr_number }}
+          EVENT_HEAD: ${{ github.event.pull_request.head.sha }}
+          PR_NUMBER: ${{ github.event.pull_request.number || inputs.pr_number }}
           REVIEW_TOKEN: ${{ github.token }}
         name: Prepare bounded review context
-        run: "python3 - <<'PY'\nimport json\nimport os\nimport re\nfrom pathlib import Path\nfrom urllib.request import Request, urlopen\n\nnumber = os.environ[\"PR_NUMBER\"]\ndefault = os.environ[\"DEFAULT_BRANCH\"]\nif not re.fullmatch(r\"[1-9][0-9]*\", number) or os.environ[\"GITHUB_REF\"] != f\"refs/heads/{default}\":\n    raise SystemExit(\"Run from the default branch with a valid PR number.\")\nrepository = os.environ[\"GITHUB_REPOSITORY\"]\nendpoint = f\"{os.environ['GITHUB_API_URL']}/repos/{repository}/pulls/{number}\"\n\ndef get(url):\n    request = Request(url, headers={\n        \"Authorization\": f\"Bearer {os.environ['REVIEW_TOKEN']}\",\n        \"Accept\": \"application/vnd.github+json\",\n    })\n    with urlopen(request, timeout=20) as response:\n        return json.load(response)\n\npr = get(endpoint)\nhead = pr[\"head\"]\nif (pr[\"state\"] != \"open\" or (head[\"repo\"] or {}).get(\"full_name\") != repository\n        or pr[\"base\"][\"ref\"] != default or pr[\"user\"][\"login\"] == \"dependabot[bot]\"):\n    raise SystemExit(\"Only open internal PRs targeting the default branch are eligible.\")\nif not 1 <= pr[\"changed_files\"] <= 20:\n    raise SystemExit(\"Pilot limit: 20 changed files.\")\nfiles = get(f\"{endpoint}/files?per_page=20\")\ncurrent = get(endpoint)\nif (len(files) != pr[\"changed_files\"]\n        or current[\"head\"][\"sha\"] != head[\"sha\"]\n        or current[\"base\"][\"sha\"] != pr[\"base\"][\"sha\"]):\n    raise SystemExit(\"PR changed while collecting its diff. Run again.\")\npatches = [{\"path\": file[\"filename\"], \"patch\": file[\"patch\"]}\n           for file in files if file[\"filename\"].endswith((\".py\", \".pyi\"))\n           and file.get(\"patch\")]\nif not patches:\n    raise SystemExit(\"No Python diff available.\")\ncontext = json.dumps({\"pr\": int(number), \"head_sha\": head[\"sha\"],\n                      \"python_patches\": patches}, ensure_ascii=False)\nif len(context.encode()) > 24000:\n    raise SystemExit(\"Pilot limit: 24 KB of Python patches.\")\nPath(\"codeguardian-agent-context.json\").write_text(context, encoding=\"utf-8\")\nPath(os.environ[\"RUNNER_TEMP\"], \"codeguardian-review-sha.txt\").write_text(\n    head[\"sha\"], encoding=\"ascii\"\n)\nPY\n"
+        run: "python3 - <<'PY'\nimport json\nimport os\nimport re\nfrom pathlib import Path\nfrom urllib.request import Request, urlopen\n\nnumber = os.environ[\"PR_NUMBER\"]\ndefault = os.environ[\"DEFAULT_BRANCH\"]\nif not re.fullmatch(r\"[1-9][0-9]*\", number) or os.environ[\"GITHUB_REF\"] != f\"refs/heads/{default}\":\n    raise SystemExit(\"Run from the default branch with a valid PR number.\")\nrepository = os.environ[\"GITHUB_REPOSITORY\"]\nendpoint = f\"{os.environ['GITHUB_API_URL']}/repos/{repository}/pulls/{number}\"\n\ndef get(url):\n    request = Request(url, headers={\n        \"Authorization\": f\"Bearer {os.environ['REVIEW_TOKEN']}\",\n        \"Accept\": \"application/vnd.github+json\",\n    })\n    with urlopen(request, timeout=20) as response:\n        return json.load(response)\n\npr = get(endpoint)\nhead = pr[\"head\"]\nif os.environ[\"EVENT_HEAD\"] and head[\"sha\"] != os.environ[\"EVENT_HEAD\"]:\n    raise SystemExit(\"A newer commit already has its own review run.\")\nif (pr[\"state\"] != \"open\" or (head[\"repo\"] or {}).get(\"full_name\") != repository\n        or pr[\"base\"][\"ref\"] != default or pr[\"user\"][\"login\"] == \"dependabot[bot]\"):\n    raise SystemExit(\"Only open internal PRs targeting the default branch are eligible.\")\nif not 1 <= pr[\"changed_files\"] <= 20:\n    raise SystemExit(\"Pilot limit: 20 changed files.\")\nfiles = get(f\"{endpoint}/files?per_page=20\")\ncurrent = get(endpoint)\nif (len(files) != pr[\"changed_files\"]\n        or current[\"head\"][\"sha\"] != head[\"sha\"]\n        or current[\"base\"][\"sha\"] != pr[\"base\"][\"sha\"]):\n    raise SystemExit(\"PR changed while collecting its diff. Run again.\")\npatches = [{\"path\": file[\"filename\"], \"patch\": file[\"patch\"]}\n           for file in files if file[\"filename\"].endswith((\".py\", \".pyi\"))\n           and file.get(\"patch\")]\nif not patches:\n    raise SystemExit(\"No Python diff available.\")\ncontext = json.dumps({\"pr\": int(number), \"head_sha\": head[\"sha\"],\n                      \"python_patches\": patches}, ensure_ascii=False)\nif len(context.encode()) > 24000:\n    raise SystemExit(\"Pilot limit: 24 KB of Python patches.\")\nPath(\"codeguardian-agent-context.json\").write_text(context, encoding=\"utf-8\")\nPath(os.environ[\"RUNNER_TEMP\"], \"codeguardian-review-sha.txt\").write_text(\n    head[\"sha\"], encoding=\"ascii\"\n)\nPY\n"
       - name: Save reviewed commit
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
@@ -868,12 +876,6 @@ jobs:
           GIT_COMMITTER_NAME: github-actions[bot]
           RUNNER_TEMP: ${{ runner.temp }}
           TRACEPARENT: ${{ env.GITHUB_AW_OTEL_TRACE_ID != '' && env.GITHUB_AW_OTEL_PARENT_SPAN_ID != '' && format('00-{0}-{1}-01', env.GITHUB_AW_OTEL_TRACE_ID, env.GITHUB_AW_OTEL_PARENT_SPAN_ID) || '' }}
-      - name: Configure Git credentials
-        env:
-          GITHUB_REPOSITORY: ${{ github.repository }}
-          GITHUB_SERVER_URL: ${{ github.server_url }}
-          GITHUB_TOKEN: ${{ github.token }}
-        run: bash "${RUNNER_TEMP}/gh-aw/actions/configure_git_credentials.sh"
       - name: Move Gemini error files to artifact directory
         if: always()
         run: mv /tmp/gemini-client-error-*.json /tmp/gh-aw/ 2>/dev/null || true
@@ -899,10 +901,8 @@ jobs:
             const { main } = require(path.join(actionsDir, 'redact_secrets.cjs'));
             await main();
         env:
-          GH_AW_SECRET_NAMES: 'GEMINI_API_KEY,GH_AW_GITHUB_MCP_SERVER_TOKEN,GH_AW_GITHUB_TOKEN,GITHUB_TOKEN'
+          GH_AW_SECRET_NAMES: 'GEMINI_API_KEY,GITHUB_TOKEN'
           SECRET_GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          SECRET_GH_AW_GITHUB_MCP_SERVER_TOKEN: ${{ secrets.GH_AW_GITHUB_MCP_SERVER_TOKEN }}
-          SECRET_GH_AW_GITHUB_TOKEN: ${{ secrets.GH_AW_GITHUB_TOKEN }}
           SECRET_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Append agent step summary
         if: always()
@@ -1071,6 +1071,7 @@ jobs:
     needs:
       - activation
       - agent
+      - mark_obsolete
       - review_summary
       - safe_outputs
     if: >
@@ -1090,9 +1091,9 @@ jobs:
       cancel-in-progress: false
       queue: max
     env:
-      GH_AW_JOB_DISPLAY_NAMES: "{\"activation\":\"activation\",\"agent\":\"agent\",\"conclusion\":\"conclusion\",\"review_summary\":\"review_summary\",\"safe_outputs\":\"safe_outputs\"}"
-      GH_AW_JOB_RESULTS: "{\"activation\":{\"result\":\"${{ needs.activation.result }}\"},\"agent\":{\"result\":\"${{ needs.agent.result }}\"},\"review_summary\":{\"result\":\"${{ needs.review_summary.result }}\"},\"safe_outputs\":{\"result\":\"${{ needs.safe_outputs.result }}\"}}"
-      GH_AW_JOB_TIMING_ELIGIBLE: "{\"activation\":true,\"agent\":true,\"conclusion\":true,\"review_summary\":true,\"safe_outputs\":true}"
+      GH_AW_JOB_DISPLAY_NAMES: "{\"activation\":\"activation\",\"agent\":\"agent\",\"conclusion\":\"conclusion\",\"mark_obsolete\":\"mark_obsolete\",\"pre_activation\":\"pre_activation\",\"review_summary\":\"review_summary\",\"safe_outputs\":\"safe_outputs\"}"
+      GH_AW_JOB_RESULTS: "{\"activation\":{\"result\":\"${{ needs.activation.result }}\"},\"agent\":{\"result\":\"${{ needs.agent.result }}\"},\"mark_obsolete\":{\"result\":\"${{ needs.mark_obsolete.result }}\"},\"review_summary\":{\"result\":\"${{ needs.review_summary.result }}\"},\"safe_outputs\":{\"result\":\"${{ needs.safe_outputs.result }}\"}}"
+      GH_AW_JOB_TIMING_ELIGIBLE: "{\"activation\":true,\"agent\":true,\"conclusion\":true,\"mark_obsolete\":true,\"pre_activation\":true,\"review_summary\":true,\"safe_outputs\":true}"
       GH_AW_RUNTIME_FEATURES: ${{ vars.GH_AW_RUNTIME_FEATURES }}
     outputs:
       incomplete_count: ${{ steps.report_incomplete.outputs.incomplete_count }}
@@ -1222,13 +1223,11 @@ jobs:
           GH_AW_ACTION_FAILURE_ISSUE_EXPIRES_HOURS: "0"
           GH_AW_ENGINE_ID: "gemini"
           GH_AW_SECRET_VERIFICATION_RESULT: ${{ needs.activation.outputs.secret_verification_result }}
-          GH_AW_CHECKOUT_PR_SUCCESS: ${{ needs.agent.outputs.checkout_pr_success }}
-          GH_AW_CHECKOUT_PR_INVALIDATED: ${{ needs.agent.outputs.checkout_pr_invalidated }}
           GH_AW_AI_CREDITS_RATE_LIMIT_ERROR: ${{ needs.agent.outputs.ai_credits_rate_limit_error || 'false' }}
           GH_AW_UNKNOWN_MODEL_AI_CREDITS: ${{ needs.agent.outputs.unknown_model_ai_credits || 'false' }}
           GH_AW_AIC: ${{ needs.agent.outputs.aic }}
           GH_AW_MAX_AI_CREDITS: ${{ vars.GH_AW_DEFAULT_MAX_AI_CREDITS || '1000' }}
-          GH_AW_DEFAULT_CHECKOUT_USES_TRIGGER_REF: "true"
+          GH_AW_DEFAULT_CHECKOUT_USES_TRIGGER_REF: "false"
           GH_AW_ENGINE_API_HOSTS: "generativelanguage.googleapis.com"
           GH_AW_LOCKDOWN_CHECK_FAILED: ${{ needs.activation.outputs.lockdown_check_failed }}
           GH_AW_OAUTH_TOKEN_CHECK_FAILED: ${{ needs.activation.outputs.oauth_token_check_failed }}
@@ -1351,6 +1350,94 @@ jobs:
           overwrite: true
           retention-days: ${{ vars.GH_AW_DEFAULT_ARTIFACT_RETENTION_DAYS || '0' }}
 
+  mark_obsolete:
+    name: mark_obsolete
+    needs: activation
+    if: >
+      github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name == github.repository &&
+      github.event.pull_request.base.ref == github.event.repository.default_branch && github.event.pull_request.user.login != 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    # Permissions for the mark_obsolete job (workflow permissions default to none).
+    permissions:
+      pull-requests: write
+    concurrency:
+      cancel-in-progress: false
+      group: codeguardian-gemini-comment-${{ github.event.pull_request.number }}
+
+    timeout-minutes: 2
+    steps:
+      - name: Configure GH_HOST for enterprise compatibility
+        id: ghes-host-config
+        shell: bash
+        run: | # zizmor: ignore[github-env] - GITHUB_SERVER_URL is set by GitHub Actions, not user input.
+          # Derive GH_HOST from GITHUB_SERVER_URL so the gh CLI targets the correct
+          # GitHub instance (GHES/GHEC). On github.com this is a harmless no-op.
+          GH_HOST="${GITHUB_SERVER_URL#https://}"
+          GH_HOST="${GH_HOST#http://}"
+          echo "GH_HOST=${GH_HOST}" >> "$GITHUB_ENV"
+      - uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          script: |
+            const scope = { ...context.repo, issue_number: context.payload.pull_request.number };
+            const marker = '<!-- codeguardian-gemini-report -->';
+            for await (const page of github.paginate.iterator(github.rest.issues.listComments, { ...scope, per_page: 100 })) {
+              const comment = page.data.find(item =>
+                item.user?.login === 'github-actions[bot]' && item.body?.startsWith(marker));
+              if (!comment) continue;
+              const { data: pr } = await github.rest.pulls.get({ ...context.repo, pull_number: scope.issue_number });
+              const reviewed = comment.body.match(/^Reviewed commit: `([a-f0-9]{40})`$/m);
+              if (pr.state === 'open' && reviewed && reviewed[1] !== pr.head.sha && !comment.body.includes('<!-- codeguardian-obsolete -->')) {
+                await github.rest.issues.updateComment({
+                  ...context.repo, comment_id: comment.id,
+                  body: comment.body.replace(marker, marker + '\n<!-- codeguardian-obsolete -->\n> **Revisión obsoleta.** El PR tiene un commit posterior al revisado.\n'),
+                });
+              }
+              break;
+            }
+
+  pre_activation:
+    name: pre_activation
+    if: >
+      github.event_name == 'workflow_dispatch' || (github.event.pull_request.head.repo.full_name == github.repository &&
+      github.event.pull_request.user.login != 'dependabot[bot]' && !github.event.pull_request.draft)
+    runs-on: ubuntu-slim
+    env:
+      GH_AW_RUNTIME_FEATURES: ${{ vars.GH_AW_RUNTIME_FEATURES }}
+    outputs:
+      activated: ${{ steps.check_membership.outputs.is_team_member == 'true' }}
+      matched_command: ''
+      setup-parent-span-id: ${{ steps.setup.outputs.parent-span-id || steps.setup.outputs.span-id }}
+      setup-span-id: ${{ steps.setup.outputs.span-id }}
+      setup-trace-id: ${{ steps.setup.outputs.trace-id }}
+    steps:
+      - name: Setup Scripts
+        id: setup
+        uses: github/gh-aw/actions/setup@0627fdbe4beb5f3b71aa569f8d97150b87f2111a
+        with:
+          destination: ${{ runner.temp }}/gh-aw/actions
+          job-name: ${{ github.job }}
+        env:
+          GH_AW_SETUP_WORKFLOW_NAME: "CodeGuardian Gemini Pilot"
+          GH_AW_CURRENT_WORKFLOW_REF: ${{ github.repository }}/.github/workflows/codex-review.lock.yml@${{ github.ref }}
+          GH_AW_INFO_VERSION: "0.64.0"
+          GH_AW_INFO_AWF_VERSION: "v0.29.0"
+          GH_AW_INFO_ENGINE_ID: "gemini"
+          GH_AW_SETUP_AW_CONTEXT: ${{ inputs.aw_context }}
+      - name: Check team membership for workflow
+        id: check_membership
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        env:
+          GH_AW_REQUIRED_ROLES: "admin,maintainer,write"
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const path = require('path');
+            const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+            const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+            setupGlobals(core, github, context, exec, io, getOctokit);
+            const { main } = require(path.join(actionsDir, 'check_membership.cjs'));
+            await main();
+
   review_summary:
     name: review_summary
     needs: agent
@@ -1361,7 +1448,7 @@ jobs:
       pull-requests: write
     concurrency:
       cancel-in-progress: false
-      group: codeguardian-gemini-comment-${{ inputs.pr_number }}
+      group: codeguardian-gemini-comment-${{ github.event.pull_request.number || inputs.pr_number }}
 
     timeout-minutes: 2
     steps:
@@ -1478,7 +1565,7 @@ jobs:
               api(comments_url, "POST", {"body": body})
           PY
         env:
-          PR_NUMBER: ${{ inputs.pr_number }}
+          PR_NUMBER: ${{ github.event.pull_request.number || inputs.pr_number }}
           REVIEW_TOKEN: ${{ github.token }}
 
   safe_outputs:
@@ -1499,6 +1586,7 @@ jobs:
       GH_AW_ENGINE_ID: "gemini"
       GH_AW_ENGINE_MODEL: "gemini-3.5-flash-lite"
       GH_AW_ENGINE_VERSION: "0.64.0"
+      GH_AW_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
       GH_AW_RUNTIME_FEATURES: ${{ vars.GH_AW_RUNTIME_FEATURES }}
       GH_AW_SAFE_OUTPUTS_STAGED: "true"
       GH_AW_WORKFLOW_ID: "codex-review"
